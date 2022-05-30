@@ -1,0 +1,68 @@
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.deps.json
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.dll
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.pdb
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\bin\Debug\net6.0\DomainLayer.dll
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\bin\Debug\net6.0\DomainLayer.pdb
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.AssemblyReference.cache
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfoInputs.cache
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfo.cs
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CoreCompileInputs.cache
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CopyComplete
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.dll
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\obj\Debug\net6.0\refint\RepositoryLayer.dll
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.pdb
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\obj\Debug\net6.0\ref\RepositoryLayer.dll
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.runtimeconfig.json
+C:\Users\haqua\source\repos\OnionArchitecture\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.genruntimeconfig.cache
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.AssemblyReference.cache
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfoInputs.cache
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfo.cs
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CoreCompileInputs.cache
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\obj\Debug\net6.0\refint\RepositoryLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.pdb
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.deps.json
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.runtimeconfig.json
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.pdb
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\bin\Debug\net6.0\DomainLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\bin\Debug\net6.0\DomainLayer.pdb
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CopyComplete
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.genruntimeconfig.cache
+C:\Users\haqua\OneDrive\Máy tính\ASP.NET-core-MVC\RepositoryLayer\obj\Debug\net6.0\ref\RepositoryLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.deps.json
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.runtimeconfig.json
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.pdb
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\bin\Debug\net6.0\DomainLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\bin\Debug\net6.0\DomainLayer.pdb
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.AssemblyReference.cache
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfoInputs.cache
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfo.cs
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CoreCompileInputs.cache
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CopyComplete
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\obj\Debug\net6.0\refint\RepositoryLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.pdb
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.genruntimeconfig.cache
+C:\Users\haqua\OneDrive\Máy tính\ASP.Net-API\RepositoryLayer\obj\Debug\net6.0\ref\RepositoryLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.AssemblyReference.cache
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfoInputs.cache
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.AssemblyInfo.cs
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CoreCompileInputs.cache
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\obj\Debug\net6.0\refint\RepositoryLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.pdb
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.deps.json
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.runtimeconfig.json
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\bin\Debug\net6.0\RepositoryLayer.pdb
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\bin\Debug\net6.0\DomainLayer.dll
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\bin\Debug\net6.0\DomainLayer.pdb
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.CopyComplete
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.genruntimeconfig.cache
+C:\Users\haqua\OneDrive\Máy tính\API\RepositoryLayer\obj\Debug\net6.0\ref\RepositoryLayer.dll
