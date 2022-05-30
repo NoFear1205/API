@@ -65,14 +65,14 @@ namespace API.Controllers
         }
         [HttpPost("login")]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginRequestDTO model)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDTO model)
         {
             var temp = _user.FindById(model.Username);           
            
             if(temp == null)
             {
                 ModelState.AddModelError("Username", "Username in correct");
-                return BadRequest(ModelState);
+                return NotFound(ModelState);
             }else if (!_authen.VerifyPasswordHash(model.Password, temp.HashPassword, temp.PasswordSalt))
             {
                 ModelState.AddModelError("Password", "Password in correct");
@@ -95,7 +95,7 @@ namespace API.Controllers
                 return BadRequest(ModelState);
             }else if(model.repassword != model.newpassword)
             {
-                ModelState.AddModelError("newpassword", "nhập lại mật khẩu không đúng");
+                ModelState.AddModelError("repassword", "nhập lại mật khẩu không đúng");
                 return BadRequest(ModelState);
             }
             string name = User.FindFirstValue(ClaimTypes.Name);
@@ -107,9 +107,13 @@ namespace API.Controllers
                 temp.PasswordSalt = passwordSalt;
                 if (_user.Update(temp))
                     return Ok();
-                else return BadRequest();
+                else return BadRequest("Xảy ra lỗi trong quá trình đổi mật khẩu");
             }
-            return BadRequest();
+            else
+            {
+                ModelState.AddModelError("password", "Mật khẩu cũ không đúng");
+                return BadRequest(ModelState);
+            }
         }
     }
 }
