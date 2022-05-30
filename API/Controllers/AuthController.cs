@@ -67,24 +67,28 @@ namespace API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO model)
         {
-            var temp = _user.FindById(model.Username);           
-           
-            if(temp == null)
+            var temp = _user.FindById(model.Username);
+
+            if (temp == null)
             {
                 ModelState.AddModelError("Username", "Username in correct");
-                return NotFound(ModelState);
-            }else if (!_authen.VerifyPasswordHash(model.Password, temp.HashPassword, temp.PasswordSalt))
+                return Unauthorized(ModelState);
+            } else if (!_authen.VerifyPasswordHash(model.Password, temp.HashPassword, temp.PasswordSalt))
             {
                 ModelState.AddModelError("Password", "Password in correct");
-                return BadRequest(ModelState);
+                return Unauthorized(ModelState);
             }
             List<string> roles = new List<string>();
             foreach (var item in _userrole.GetByUserId(temp.Id))
             {
                 roles.Add(item.Roles.RoleName);
             };
-            string token = _authen.CreateToken(temp,roles);
-            return Ok(token);
+            string token = _authen.CreateToken(temp, roles);
+
+            string refreshToken = _authen.GenerateRefreshToken();
+            _user.SetRefreshToken(model.Username, refreshToken);
+        
+            return Ok(new Tokens() { AccessToken=token,RefreshToken=refreshToken});
         }
         [HttpPut("Changepassword")]
        //[AllowAnonymous]
@@ -98,7 +102,7 @@ namespace API.Controllers
                 ModelState.AddModelError("repassword", "nhập lại mật khẩu không đúng");
                 return BadRequest(ModelState);
             }
-            string name = User.FindFirstValue(ClaimTypes.Name);
+            string name = User.FindFirstValue(ClaimTypes.Role);
             var temp = _user.FindById(name);
             if (_authen.VerifyPasswordHash(model.password, temp.HashPassword, temp.PasswordSalt))
             {
@@ -106,7 +110,7 @@ namespace API.Controllers
                 temp.HashPassword = passwordHash;
                 temp.PasswordSalt = passwordSalt;
                 if (_user.Update(temp))
-                    return Ok();
+                    return Ok("Đổi mật khẩu thành công");
                 else return BadRequest("Xảy ra lỗi trong quá trình đổi mật khẩu");
             }
             else
@@ -114,6 +118,29 @@ namespace API.Controllers
                 ModelState.AddModelError("password", "Mật khẩu cũ không đúng");
                 return BadRequest(ModelState);
             }
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("refresh")]
+        public IActionResult Refresh([FromBody] string RefreshToken,string username)
+        {
+            var temp = _user.FindById(username);
+
+            if (!temp.RefreshToken.Equals(RefreshToken))
+            {
+                return Unauthorized("Invalid attempt!");
+            }
+            List<string> roles = new List<string>();
+            foreach (var item in _userrole.GetByUserId(temp.Id))
+            {
+                roles.Add(item.Roles.RoleName);
+            };
+            string newJwtToken = _authen.CreateToken(temp, roles);
+            if (newJwtToken == null)
+            {
+                return Unauthorized("Invalid attempt!");
+            }
+            return Ok(new Tokens() { AccessToken=newJwtToken,RefreshToken=temp.RefreshToken});
         }
     }
 }

@@ -2,12 +2,10 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using ServiceLayer.Service.Interfaces;
-
 using System.IdentityModel.Tokens.Jwt;
-
 using System.Security.Claims;
 using System.Security.Cryptography;
-
+using System.Text;
 
 namespace ServiceLayer.Service.Implentation
 {
@@ -35,7 +33,7 @@ namespace ServiceLayer.Service.Implentation
             var token = new JwtSecurityToken(
                 claims: claims,
                 notBefore: DateTime.UtcNow,
-                expires: DateTime.UtcNow.AddMinutes(10),
+                expires: DateTime.UtcNow.AddSeconds(20),
 
                 signingCredentials: creds); ;
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
@@ -55,6 +53,15 @@ namespace ServiceLayer.Service.Implentation
             {
                 var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
                 return computedHash.SequenceEqual(passwordHash);
+            }
+        }
+        public string GenerateRefreshToken()
+        {
+            var randomNumber = new byte[32];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomNumber);
+                return Convert.ToBase64String(randomNumber);
             }
         }
     }

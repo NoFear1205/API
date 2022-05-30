@@ -26,14 +26,31 @@ namespace ServiceLayer.Service.Implentation
             return _user.Delete(model);
         }
 
+
         public User FindById(string username)
         {
              return _user.FindById(username);   
         }
 
+        public bool SetRefreshToken(string username,string refreshToken)
+        {
+            return _user.SetRefreshToken(username, refreshToken);
+        }
+
+        public bool DeleteRefreshToken(string username)
+        {
+            return _user.DeleteRefreshToken(username);
+        }
+
         public bool Update(User model)
         {
             return _user.Update(model);
+        }
+
+        public string? getRefreshToken(string username)
+        {
+            var temp = _user.FindById(username);
+            return temp.RefreshToken;
         }
     }
 }
