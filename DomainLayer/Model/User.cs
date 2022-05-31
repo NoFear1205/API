@@ -9,7 +9,7 @@ namespace DomainLayer.Model
         public string Username { get; set; } = string.Empty;
         public byte[] HashPassword { get; set; }
         public byte[] PasswordSalt { get; set; }
-        public string? RefreshToken { get; set; }
         public IList<User_Role> UserRole { get; set; }
+        public IList<RefreshToken> RefreshToken { get; set; }
     }
 }

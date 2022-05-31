@@ -1,6 +1,7 @@
 ﻿using DomainLayer.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using RepositoryLayer;
 using ServiceLayer.Service.Interfaces;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -12,9 +13,12 @@ namespace ServiceLayer.Service.Implentation
     public class AuthenService : IAuthenService
     {
         private readonly IConfiguration _config;
-        public AuthenService(IConfiguration config)
+        private readonly IRefreshTokenRepository _refresh;
+
+        public AuthenService(IConfiguration config, IRefreshTokenRepository refresh)
         {
             _config = config;
+            _refresh = refresh;
         }
         public string CreateToken(User user, List<string> roles)
         {
@@ -55,14 +59,30 @@ namespace ServiceLayer.Service.Implentation
                 return computedHash.SequenceEqual(passwordHash);
             }
         }
-        public string GenerateRefreshToken()
+        public RefreshToken GenerateRefreshToken(int userId)
         {
             var randomNumber = new byte[32];
             using (var rng = RandomNumberGenerator.Create())
             {
                 rng.GetBytes(randomNumber);
-                return Convert.ToBase64String(randomNumber);
+                return new RefreshToken() {
+                    refreshToken = Convert.ToBase64String(randomNumber),
+                    userID = userId,
+                    Expires = DateTime.UtcNow.AddDays(10)
+                };
             }
+        }
+        public Task<bool> AddRefreshToken(RefreshToken model)
+        {
+           return _refresh.Add(model);    
+        }
+        public RefreshToken GetRefreshToken(int userId)
+        {
+            return _refresh.Get(userId);
+        }
+        public bool UpdateRefreshToken(RefreshToken model)
+        {
+            return _refresh.Update(model);
         }
     }
 }

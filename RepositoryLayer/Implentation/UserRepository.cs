@@ -37,27 +37,6 @@ namespace RepositoryLayer.Implentation
             return result;
         }
 
-        public bool SetRefreshToken(string username,string refreshToken)
-        {
-            var temp = _context.Users.Where(c=>c.Username.Equals(username)).FirstOrDefault();
-            if(temp != null)
-            {
-                temp.RefreshToken = refreshToken;
-            }
-            int row_Count = _context.SaveChanges();
-            return row_Count > 0;
-        }
-        public bool DeleteRefreshToken(string username)
-        {
-            var temp = _context.Users.Where(c => c.Username.Equals(username)).FirstOrDefault();
-            if (temp != null)
-            {
-                temp.RefreshToken = null;
-            }
-            int row_Count = _context.SaveChanges();
-            return row_Count > 0;
-        }
-
         public bool Update(User model)
         {
             _context.Users.Update(model);

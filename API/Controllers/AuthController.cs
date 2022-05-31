@@ -85,10 +85,19 @@ namespace API.Controllers
             };
             string token = _authen.CreateToken(temp, roles);
 
-            string refreshToken = _authen.GenerateRefreshToken();
-            _user.SetRefreshToken(model.Username, refreshToken);
-        
-            return Ok(new Tokens() { AccessToken=token,RefreshToken=refreshToken});
+            RefreshToken refreshToken = _authen.GenerateRefreshToken(temp.Id);
+            RefreshToken oldToken = _authen.GetRefreshToken(temp.Id);
+            oldToken.refreshToken = refreshToken.refreshToken;
+            oldToken.Expires = refreshToken.Expires;
+            if (oldToken == null)
+            {
+                 _authen.AddRefreshToken(refreshToken);
+            }
+            else
+            {
+                 _authen.UpdateRefreshToken(oldToken);
+            }
+            return Ok(new Tokens() { AccessToken=token,RefreshToken=refreshToken.refreshToken});
         }
         [HttpPut("Changepassword")]
        //[AllowAnonymous]
@@ -122,25 +131,26 @@ namespace API.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("refresh")]
-        public IActionResult Refresh([FromBody] string RefreshToken,string username)
+        public IActionResult Refresh([FromBody] string RefreshToken, string username)
         {
-            var temp = _user.FindById(username);
+            var user = _user.FindById(username);
+            var temp = _authen.GetRefreshToken(user.Id);
 
-            if (!temp.RefreshToken.Equals(RefreshToken))
+            if (!temp.refreshToken.Equals(RefreshToken))
             {
                 return Unauthorized("Invalid attempt!");
             }
             List<string> roles = new List<string>();
-            foreach (var item in _userrole.GetByUserId(temp.Id))
+            foreach (var item in _userrole.GetByUserId(user.Id))
             {
                 roles.Add(item.Roles.RoleName);
             };
-            string newJwtToken = _authen.CreateToken(temp, roles);
+            string newJwtToken = _authen.CreateToken(user, roles);
             if (newJwtToken == null)
             {
                 return Unauthorized("Invalid attempt!");
             }
-            return Ok(new Tokens() { AccessToken=newJwtToken,RefreshToken=temp.RefreshToken});
+            return Ok(new Tokens() { AccessToken = newJwtToken, RefreshToken = temp.refreshToken });
         }
     }
 }

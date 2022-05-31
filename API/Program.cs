@@ -52,6 +52,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
 builder.Services.AddScoped<IUserRoleService, UserRoleService>();
 builder.Services.AddScoped<IAuthenService, AuthenService>();
+builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenService>();
+builder.Services.AddScoped<IRefreshService, RefreshTokenRepository>();
 
 var app = builder.Build();
 

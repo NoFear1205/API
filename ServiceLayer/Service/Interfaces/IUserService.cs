@@ -13,8 +13,5 @@ namespace ServiceLayer.Service.Interfaces
         User FindById(string username);
         bool Update(User model);
         bool Delete(User model);
-        bool SetRefreshToken(string username,string refreshToken);
-        bool DeleteRefreshToken(string username);
-        string? getRefreshToken(string username);
     }
 }
