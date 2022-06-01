@@ -20,16 +20,8 @@ namespace ServiceLayer.Service.Implentation
             _config = config;
             _refresh = refresh;
         }
-        public string CreateToken(User user, List<string> roles)
-        {
-            List<Claim> claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.Username)
-            };
-            foreach (var item in roles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, item));
-            };
+        public string CreateToken(List<Claim> claims)
+        {           
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
                 _config.GetSection("AppSettings:Token").Value));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
@@ -68,7 +60,7 @@ namespace ServiceLayer.Service.Implentation
                 return new RefreshToken() {
                     refreshToken = Convert.ToBase64String(randomNumber),
                     userID = userId,
-                    Expires = DateTime.UtcNow.AddDays(10)
+                    Expires = DateTime.UtcNow.AddSeconds(30)
                 };
             }
         }
@@ -83,6 +75,22 @@ namespace ServiceLayer.Service.Implentation
         public bool UpdateRefreshToken(RefreshToken model)
         {
             return _refresh.Update(model);
+        }
+        public ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token)
+        {
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value)),
+                ValidateLifetime = false
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+            return principal;
+
         }
     }
 }

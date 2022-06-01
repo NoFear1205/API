@@ -78,24 +78,29 @@ namespace API.Controllers
                 ModelState.AddModelError("Password", "Password in correct");
                 return Unauthorized(ModelState);
             }
-            List<string> roles = new List<string>();
+            List<Claim> claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, temp.Username)
+            };
             foreach (var item in _userrole.GetByUserId(temp.Id))
             {
-                roles.Add(item.Roles.RoleName);
+                claims.Add(new Claim(ClaimTypes.Role, item.Roles.RoleName));
             };
-            string token = _authen.CreateToken(temp, roles);
+
+            string token = _authen.CreateToken(claims);
 
             RefreshToken refreshToken = _authen.GenerateRefreshToken(temp.Id);
             RefreshToken oldToken = _authen.GetRefreshToken(temp.Id);
-            oldToken.refreshToken = refreshToken.refreshToken;
-            oldToken.Expires = refreshToken.Expires;
+            
             if (oldToken == null)
             {
                  _authen.AddRefreshToken(refreshToken);
             }
             else
             {
-                 _authen.UpdateRefreshToken(oldToken);
+                oldToken.refreshToken = refreshToken.refreshToken;
+                oldToken.Expires = refreshToken.Expires;
+                _authen.UpdateRefreshToken(oldToken);
             }
             return Ok(new Tokens() { AccessToken=token,RefreshToken=refreshToken.refreshToken});
         }
@@ -131,24 +136,24 @@ namespace API.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("refresh")]
-        public IActionResult Refresh([FromBody] string RefreshToken, string username)
+        public IActionResult Refresh([FromBody] Tokens token)
         {
+            var principal = _authen.GetPrincipalFromExpiredToken(token.AccessToken);
+            var username = principal.Identity?.Name;
             var user = _user.FindById(username);
             var temp = _authen.GetRefreshToken(user.Id);
 
-            if (!temp.refreshToken.Equals(RefreshToken))
+            if (!temp.refreshToken.Equals(token.RefreshToken))
             {
                 return Unauthorized("Invalid attempt!");
-            }
-            List<string> roles = new List<string>();
-            foreach (var item in _userrole.GetByUserId(user.Id))
+            }else if( temp.Expires < DateTime.UtcNow)
             {
-                roles.Add(item.Roles.RoleName);
-            };
-            string newJwtToken = _authen.CreateToken(user, roles);
+                return Unauthorized("Token hết hạn sử dụng!");
+            }
+            string newJwtToken = _authen.CreateToken(principal.Claims.ToList());
             if (newJwtToken == null)
             {
-                return Unauthorized("Invalid attempt!");
+                return Unauthorized("Can't create new token");
             }
             return Ok(new Tokens() { AccessToken = newJwtToken, RefreshToken = temp.refreshToken });
         }

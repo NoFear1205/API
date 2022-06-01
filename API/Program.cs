@@ -29,7 +29,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
             ClockSkew = TimeSpan.Zero,
             ValidateIssuer = false,
-            ValidateAudience = false
+            ValidateAudience = false            
         };
     });
 //Auto Mapper

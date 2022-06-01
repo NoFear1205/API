@@ -10,12 +10,13 @@ namespace ServiceLayer.Service.Interfaces
 {
     public interface IAuthenService
     {
-        string CreateToken(User user, List<string> roles);
+        string CreateToken(List<Claim> claims);
         RefreshToken GenerateRefreshToken(int userId);
         void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt);
         bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt);
         RefreshToken GetRefreshToken(int userId);
         bool UpdateRefreshToken(RefreshToken model);
         Task<bool> AddRefreshToken(RefreshToken model);
+        public ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token);
     }
 }
